@@ -1,7 +1,7 @@
 # :: Builder
     FROM alpine AS builder
     ENV QEMU_URL https://github.com/balena-io/qemu/releases/download/v3.0.0%2Bresin/qemu-3.0.0+resin-arm.tar.gz
-    RUN apk add curl && curl -L ${QEMU_URL} | tar zxvf - -C . --strip-components 1
+    RUN apk add curl && curl -L ${QEMU_URL} | tar zxvf - -C . && mv qemu-3.0.0+resin-arm/qemu-arm-static .
 
 # :: Header
     FROM arm32v7/node:10.18.0-alpine3.11
