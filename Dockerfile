@@ -7,10 +7,10 @@
 
     RUN mkdir -p /app \
         && apk --update --no-cache add \
-            shadow
+            shadow libusb libusb-dev eudev-dev            
 
     RUN apk --update --no-cache --virtual .build add \
-            nodejs-dev linux-headers npm python3 gcc g++ make libusb libusb-dev eudev-dev \
+            nodejs-dev linux-headers npm python3 gcc g++ make \
         && npm install node-hid node-hid-stream --build-from-source --prefix /app \
         && apk del .build
 
