@@ -10,7 +10,7 @@
             shadow
 
     RUN apk --update --no-cache --virtual .build add \
-            nodejs-dev npm python3 gcc g++ make libusb libusb-dev eudev-dev \
+            nodejs-dev linux-headers npm python3 gcc g++ make libusb libusb-dev eudev-dev \
         && npm install node-hid node-hid-stream --build-from-source --prefix /app \
         && apk del .build
 
