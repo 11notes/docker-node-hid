@@ -10,7 +10,7 @@
 
     RUN apk --update --no-cache --virtual .build add \
             nodejs-dev npm python3 gcc g++ libusb libusb-dev eudev-dev \
-        && npm install node-hid --build-from-source --prefix /app \
+        && npm install node-hid node-hid-stream --build-from-source --prefix /app \
         && apk del .build
 
     ADD ./source/main.js /app/main.js
