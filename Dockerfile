@@ -1,5 +1,6 @@
 # :: Header
     FROM arm32v7/node:10.18.0-alpine3.11
+    ADD qemu-arm-static /usr/bin
 
 # :: Run
     USER root
