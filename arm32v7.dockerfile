@@ -26,9 +26,6 @@
         && groupmod -g 1000 node \
         && chown -R node:node /app
 
-# :: Volumes
-    VOLUME ["/app"]
-
 # :: Start
     USER node
     CMD ["node", "/app/main.js"]
