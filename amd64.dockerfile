@@ -1,25 +1,25 @@
 # :: Header
-    FROM node:10.18.0-alpine3.11
+    FROM node:12.18.3-alpine3.12
 
 # :: Run
     USER root
 
-    RUN mkdir -p /app \
+    RUN mkdir -p /node \
         && apk --update --no-cache add \
             shadow libusb libusb-dev eudev-dev            
 
     RUN apk --update --no-cache --virtual .build add \
             nodejs-dev linux-headers npm python3 gcc g++ make \
-        && npm install node-hid node-hid-stream --build-from-source --prefix /app \
+        && npm install node-hid node-hid-stream --build-from-source --prefix /node \
         && apk del .build
 
-    ADD ./source/main.js /app/main.js
+    COPY ./source/node /node
 
-# :: docker -u 1000:1000 (no root initiative)
-    RUN usermod -u 1000 node \
-        && groupmod -g 1000 node \
-        && chown -R node:node /app
+    # :: docker -u 1000:1000 (no root initiative)
+        RUN usermod -u 1000 node \
+            && groupmod -g 1000 node \
+            && chown -R node:node /node
 
 # :: Start
     USER node
-    CMD ["node", "/app/main.js"]
+    CMD ["node", "/node/main.js"]
