@@ -1,15 +1,15 @@
-image: 11notes/node-hid:latest
+image: 11notes/node-hid:12.18.3
 manifests:
-  - image: 11notes/node-hid:amd64
+  - image: 11notes/node-hid:amd64-12.18.3
     platform:
       architecture: amd64
       os: linux
-  - image: 11notes/node-hid:arm32v7
+  - image: 11notes/node-hid:arm32v7-12.18.3
     platform:
       architecture: arm
       os: linux
       variant: v7
-  - image: 11notes/node-hid:arm64v8
+  - image: 11notes/node-hid:arm64v8-12.18.3
     platform:
       architecture: arm64
       os: linux
