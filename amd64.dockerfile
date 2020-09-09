@@ -1,5 +1,5 @@
 # :: Header
-    FROM node:12.18.3-alpine3.12
+    FROM node:12.18.3-alpine3.11
 
 # :: Run
     USER root
